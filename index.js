@@ -31,7 +31,17 @@ app.post('/api/chat', async (req, res) => {
             temperature: 1,
             top_p: 1,
             messages: [
-                { role: "system", content: "You are a helpful assistant. You can solve math problems, help with daily tasks, and explain programming logic." },
+                {
+                    role: "system",
+                    content: `You are a helpful assistant. 
+Always respond in valid HTML format.
+Use:
+- <h1> for the main heading
+- <h2> for subheadings
+- <p> for paragraphs (2-5 as needed based on the topic)
+
+Avoid Markdown. Return only HTML.`
+                },
                 { role: "user", content: message }
             ],
         });
